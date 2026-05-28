@@ -8,17 +8,55 @@ Autor: Analista de Dados
 Data: 2024
 """
 
-import logging  # registra eventos estruturados (INFO, DEBUG, ERROR)
-import numpy as np  # operações numéricas (array, random, clip, where)
-import pandas as pd  # manipulação de dados (DataFrame, CSV, agregações)
-import matplotlib.pyplot as plt  # gráficos base (figura, salvamento)
-import seaborn as sns  # gráficos estatísticos (boxplot, heatmap, regplot)
-from scipy import stats  # testes inferenciais (ANOVA, Mann-Whitney, Spearman)
-from pathlib import Path  # caminhos (exists, mkdir, joinpath)
-import statsmodels.api as sm  # regressão linear (OLS)
-import statsmodels.formula.api as smf  # regressão com fórmulas R-style
-from dataclasses import dataclass  # classes com atributos tipados
-from typing import Optional  # anotações de tipo (tipo|None)
+# LOGGING: Sistema de registro estruturado de eventos. Substitui prints com nivelamento de severidade
+# (INFO para eventos principais, DEBUG para detalhes, ERROR para falhas). Essencial em produção
+# para rastreabilidade e debugging sem poluir a saída padrão.
+import logging
+
+# NUMPY: Biblioteca fundamental para computação científica. Fornece arrays multidimensionais otimizados
+# em velocidade (C nativo) e funções matemáticas vetorizadas (sem loops Python). Aqui usado para
+# gerar dados sintéticos realistas, operações numéricas rápidas como clipping, where condicional.
+import numpy as np
+
+# PANDAS: Estrutura tabular para análise de dados (DataFrame). Permite leitura/escrita de CSV,
+# filtros elegantes, agregações por grupo, tratamento de valores ausentes, merge de tabelas.
+# É a ferramenta padrão em ciência de dados para EDA (Exploratory Data Analysis).
+import pandas as pd
+
+# MATPLOTLIB: Biblioteca de visualização de baixo nível. Controla figura, eixos, labels, salvamento
+# em PNG/PDF. Usada aqui para configurar tamanho de figura, salvar gráficos com precisão de DPI.
+import matplotlib.pyplot as plt
+
+# SEABORN: Wrapper estatístico sobre matplotlib para gráficos prontos para análise exploratória.
+# Fornece boxplot, barplot, heatmap, violinplot com estetíca melhorada. Integra-se com DataFrame
+# pandas e calcula automaticamente IC (intervalo de confiança) nas visualizações.
+import seaborn as sns
+
+# SCIPY.STATS: Módulo de estatística e probabilidade. Implementa testes inferenciais (ANOVA para
+# comparação de múltiplos grupos, Mann-Whitney para não-paramétrico, Spearman para correlação de rank).
+# Essencial para validar hipóteses e determinar significância estatística.
+from scipy import stats
+
+# PATHLIB: Manipulação moderna de caminhos de arquivo (multiplataforma Windows/Linux).
+# Evita strings concatenadas e operações com barra/barra-invertida. Oferece .exists(),
+# .mkdir(), e operador / para joinpath de forma elegante.
+from pathlib import Path
+
+# STATSMODELS: Biblioteca de econometria e modelos estatísticos. Contém OLS (Ordinary Least Squares)
+# para regressão linear com outputs detalhados (R², p-valores, IC). Suporta fórmulas tipo R para
+# especificação fácil de modelos com categorias e variáveis de controle.
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+# DATACLASSES: Decorator Python para criar classes com atributos tipados automaticamente.
+# Gera __init__, __repr__ automaticamente. Facilita estruturação de configurações e dados
+# com validação de tipos em tempo de desenvolvimento (ferramentas de IDE).
+from dataclasses import dataclass
+
+# TYPING: Anotações de tipo para melhorar legibilidade e permitir type-checking estático
+# (mypy). Optional[X] significa "X ou None". Essencial em código profissional para documentar
+# contrato de funções e evitar bugs de tipo.
+from typing import Optional
 
 logging.basicConfig(
     level=logging.INFO,
