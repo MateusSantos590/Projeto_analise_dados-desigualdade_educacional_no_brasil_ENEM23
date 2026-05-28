@@ -8,17 +8,17 @@ Autor: Analista de Dados
 Data: 2024
 """
 
-import logging
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from scipy import stats
-from pathlib import Path
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
-from dataclasses import dataclass
-from typing import Optional
+import logging  # registra eventos estruturados (INFO, DEBUG, ERROR)
+import numpy as np  # operações numéricas (array, random, clip, where)
+import pandas as pd  # manipulação de dados (DataFrame, CSV, agregações)
+import matplotlib.pyplot as plt  # gráficos base (figura, salvamento)
+import seaborn as sns  # gráficos estatísticos (boxplot, heatmap, regplot)
+from scipy import stats  # testes inferenciais (ANOVA, Mann-Whitney, Spearman)
+from pathlib import Path  # caminhos (exists, mkdir, joinpath)
+import statsmodels.api as sm  # regressão linear (OLS)
+import statsmodels.formula.api as smf  # regressão com fórmulas R-style
+from dataclasses import dataclass  # classes com atributos tipados
+from typing import Optional  # anotações de tipo (tipo|None)
 
 logging.basicConfig(
     level=logging.INFO,
